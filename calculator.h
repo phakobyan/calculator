@@ -22,8 +22,12 @@ private:
 
 private slots:
     void NumPressed();
-    void MathButtonPressed();
+    //void MathButtonPressed();
     void EqualButtonPressed();
     void ChangeNumberSign();
+    void addFunc();
+    void divFunc();
+    void multFunc();
+    void subFunc();
 };
 #endif // CALCULATOR_H

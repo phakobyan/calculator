@@ -24,13 +24,13 @@ Calculator::Calculator(QWidget *parent)
             SLOT(NumPressed()));
     }
     connect(ui->Add, SIGNAL(released()), this,
-            SLOT(MathButtonPressed()));
+            SLOT(addFunc()));
     connect(ui->Subtract, SIGNAL(released()), this,
-            SLOT(MathButtonPressed()));
+            SLOT(subFunc()));
     connect(ui->Divide, SIGNAL(released()), this,
-            SLOT(MathButtonPressed()));
+            SLOT(divFunc()));
     connect(ui->Multiply, SIGNAL(released()), this,
-            SLOT(MathButtonPressed()));
+            SLOT(multFunc()));
     connect(ui->Equals, SIGNAL(released()), this,
             SLOT(EqualButtonPressed()));
     connect(ui->ChangeSign, SIGNAL(released()), this,
@@ -58,7 +58,7 @@ void Calculator::NumPressed(){
     }
 }
 
-void Calculator::MathButtonPressed(){
+/*void Calculator::MathButtonPressed(){
     divTrigger = false;
     multTrigger = false;
     addTrigger = false;
@@ -78,7 +78,7 @@ void Calculator::MathButtonPressed(){
     }
     ui->Display->setText("");
 
-}
+}*/
 
 void Calculator::EqualButtonPressed(){
     double solution =0.0;
@@ -106,4 +106,54 @@ void Calculator::ChangeNumberSign(){
         double dblDisplayValSign = -1 * dblDisplayVal;
         ui->Display->setText(QString::number(dblDisplayValSign));
     }
+}
+
+//divide MathButtonPressed to mini functions for every sign
+
+void Calculator::addFunc(){
+    addTrigger = false;
+    QString displayVal = ui->Display->text();
+    calcVal = displayVal.toDouble();
+    QPushButton *button = (QPushButton *)sender();
+    QString butVal = button->text();
+    if(QString::compare(butVal, "+", Qt::CaseInsensitive)==0){
+        addTrigger = true;
+    }
+    ui->Display->setText("");
+}
+
+void Calculator::subFunc(){
+    subTrigger = false;
+    QString displayVal = ui->Display->text();
+    calcVal = displayVal.toDouble();
+    QPushButton *button = (QPushButton *)sender();
+    QString butVal = button->text();
+    if(QString::compare(butVal, "-", Qt::CaseInsensitive)==0){
+        subTrigger = true;
+    }
+    ui->Display->setText("");
+}
+
+void Calculator::multFunc(){
+    multTrigger = false;
+    QString displayVal = ui->Display->text();
+    calcVal = displayVal.toDouble();
+    QPushButton *button = (QPushButton *)sender();
+    QString butVal = button->text();
+    if(QString::compare(butVal, "*", Qt::CaseInsensitive)==0){
+        multTrigger = true;
+    }
+    ui->Display->setText("");
+}
+
+void Calculator::divFunc(){
+    divTrigger = false;
+    QString displayVal = ui->Display->text();
+    calcVal = displayVal.toDouble();
+    QPushButton *button = (QPushButton *)sender();
+    QString butVal = button->text();
+    if(QString::compare(butVal, "/", Qt::CaseInsensitive)==0){
+        divTrigger = true;
+    }
+    ui->Display->setText("");
 }
