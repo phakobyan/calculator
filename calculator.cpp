@@ -114,11 +114,7 @@ void Calculator::addFunc(){
     addTrigger = false;
     QString displayVal = ui->Display->text();
     calcVal = displayVal.toDouble();
-    QPushButton *button = (QPushButton *)sender();
-    QString butVal = button->text();
-    if(QString::compare(butVal, "+", Qt::CaseInsensitive)==0){
-        addTrigger = true;
-    }
+    addTrigger = true;
     ui->Display->setText("");
 }
 
@@ -126,11 +122,7 @@ void Calculator::subFunc(){
     subTrigger = false;
     QString displayVal = ui->Display->text();
     calcVal = displayVal.toDouble();
-    QPushButton *button = (QPushButton *)sender();
-    QString butVal = button->text();
-    if(QString::compare(butVal, "-", Qt::CaseInsensitive)==0){
-        subTrigger = true;
-    }
+    subTrigger = true;
     ui->Display->setText("");
 }
 
@@ -138,11 +130,7 @@ void Calculator::multFunc(){
     multTrigger = false;
     QString displayVal = ui->Display->text();
     calcVal = displayVal.toDouble();
-    QPushButton *button = (QPushButton *)sender();
-    QString butVal = button->text();
-    if(QString::compare(butVal, "*", Qt::CaseInsensitive)==0){
-        multTrigger = true;
-    }
+    multTrigger = true;
     ui->Display->setText("");
 }
 
@@ -150,10 +138,6 @@ void Calculator::divFunc(){
     divTrigger = false;
     QString displayVal = ui->Display->text();
     calcVal = displayVal.toDouble();
-    QPushButton *button = (QPushButton *)sender();
-    QString butVal = button->text();
-    if(QString::compare(butVal, "/", Qt::CaseInsensitive)==0){
-        divTrigger = true;
-    }
+    divTrigger = true;
     ui->Display->setText("");
 }
