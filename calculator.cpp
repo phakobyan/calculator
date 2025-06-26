@@ -35,6 +35,8 @@ Calculator::Calculator(QWidget *parent)
             SLOT(EqualButtonPressed()));
     connect(ui->ChangeSign, SIGNAL(released()), this,
             SLOT(ChangeNumberSign()));
+    connect(ui->Clear, SIGNAL(released()), this,
+            SLOT(AllClearButton()));
 }
 
 Calculator::~Calculator()
@@ -87,12 +89,16 @@ void Calculator::EqualButtonPressed(){
     if(addTrigger || subTrigger || multTrigger || divTrigger){
         if(addTrigger){
             solution = calcVal + dblDisplayVal;
+            addTrigger = false;
         }else if (subTrigger){
             solution = calcVal - dblDisplayVal;
+            subTrigger = false;
         }else if (multTrigger){
             solution = calcVal * dblDisplayVal;
+            multTrigger = false;
         }else {
             solution = calcVal / dblDisplayVal;
+            divTrigger = false;
         }
     }
     ui->Display->setText(QString::number(solution));
@@ -140,4 +146,9 @@ void Calculator::divFunc(){
     calcVal = displayVal.toDouble();
     divTrigger = true;
     ui->Display->setText("");
+}
+
+void Calculator::AllClearButton(){
+    double solution = 0.0;
+    ui->Display->setText(QString::number(solution));
 }

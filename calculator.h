@@ -29,5 +29,6 @@ private slots:
     void divFunc();
     void multFunc();
     void subFunc();
+    void AllClearButton();
 };
 #endif // CALCULATOR_H
